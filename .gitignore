@@ -1,0 +1,8 @@
+.env                          # Configurazione locale secreta
+backend/target/*              # Build artifacts Maven (escluso .class)
+frontend/dist/                # File JS minificati e bundle
+*.log                         # Log file di sistema
+.dockerignore                 # Esclusioni Docker specifiche
+.vscode/                      # VS Code settings
+.idea/                        # IntelliJ settings
+.DS_Store                     # Mac artefatti

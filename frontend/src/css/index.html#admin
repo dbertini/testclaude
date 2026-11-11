@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amministratore - Libreria Personale</title>
+    <link rel="stylesheet" href="/css/base.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <a href="/" class="logo">📚 Libreria Personale</a>
+            <nav class="navbar">
+                <button id="menu-toggle" class="menu-toggle" aria-label="Menu mobile">☰</button>
+                <ul class="nav-links" id="main-nav">
+                    <li><span>Amministratore (attivo)</span></li>
+                    <li><a href="/js/auth.js#admin">Amministratore</a></li>
+                    <li><a href="/js/auth.js#logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content" id="app-content">
+            <section class="admin-panel" id="admin-panel">
+                <h1>🔐 Amministratore</h1>
+                <p>Gestisci la libreria completa: libri, autori, case editrici.</p>
+
+                <div class="tabs">
+                    <button onclick="showAdminTab('books')">Libri</button>
+                    <button onclick="showAdminTab('authors')">Autori</button>
+                    <button onclick="showAdminTab('publishers')">Editrici</button>
+                    <button onclick="showAdminTab('positions')">Posizioni</button>
+                </div>
+
+                <!-- Admin Tab Content will be dynamically loaded -->
+            </section>
+        </main>
+
+        <!-- Mobile Menu -->
+        <aside class="sidebar" id="sidebar">
+            <a href="/" target="_self">I Miei Libri</a>
+            <a href="/js/auth.js#admin" target="_self">Amministratore</a>
+            <a href="/js/auth.js#logout" target="_self">Logout</a>
+        </aside>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/book.js"></script>
+    <script src="/js/author.js"></script>
+    <script src="/js/publisher.js"></script>
+    <script src="/js/position.js"></script>
+</body>
+</html>

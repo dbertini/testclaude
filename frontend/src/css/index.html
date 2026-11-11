@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Miei Libri - Libreria Personale</title>
+    <link rel="stylesheet" href="/css/base.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <a href="/" class="logo">📚 Libreria Personale</a>
+            <nav class="navbar">
+                <button id="menu-toggle" class="menu-toggle" aria-label="Menu mobile">☰</button>
+                <ul class="nav-links" id="main-nav">
+                    <li><span>I Miei Libri (attivo)</span></li>
+                    <li><a href="/js/auth.js#admin">Amministratore</a></li>
+                    <li><a href="/js/auth.js#logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content" id="app-content">
+            <section id="welcome-message">
+                <h1>I Miei Libri 📚</h1>
+                <p>Visualizza e gestisci la tua collezione di libri.</p>
+            </section>
+
+            <!-- Books List -->
+            <section class="books-section" id="books-container">
+                <div id="loading">Caricamento...</div>
+            </section>
+        </main>
+
+        <!-- Mobile Menu -->
+        <aside class="sidebar" id="sidebar">
+            <a href="/" target="_self">I Miei Libri</a>
+            <a href="/js/auth.js#admin" target="_self">Amministratore</a>
+            <a href="/js/auth.js#logout" target="_self">Logout</a>
+        </aside>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/book.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "libreria-frontend",
+  "version": "1.0.0",
+  "description": "Frontend statico per libreria personale in HTML/JS responsive",
+  "main": "dist/index.html",
+  "directories": {
+    "public": "public",
+    "src": "src"
+  },
+  "scripts": {
+    "start": "echo \"Serve frontend statico con nginx - avvia docker compose\"",
+    "build": "echo \"Build frontend statica - copione risorse a dist/\"",
+    "clean": "rm -rf dist && mkdir dist && cp -r public/* dist/",
+    "test": "echo \"Test unitari frontend - test non ancora implementati\""
+  },
+  "keywords": ["libreria", "responsive", "html"],
+  "author": "David Bertini",
+  "license": "MIT"
+}
