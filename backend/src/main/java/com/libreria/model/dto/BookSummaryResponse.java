@@ -12,6 +12,8 @@ public class BookSummaryResponse {
     private String titoloEdizione;
     private String editoreId;
     private String posizioneId;
+    private String isbn10;  // ISBN prima edizione (formato 10)
+    private String isbn13;  // ISBN seconda edizione (formato 13)
     private int copiePossedute;
     private String annotazioni;
     private LocalDateTime dataAcquisto;
@@ -31,6 +33,12 @@ public class BookSummaryResponse {
 
     public String getTitoloEdizione() { return titoloEdizione; }
     public void setTitoloEdizione(String titoloEdizione) { this.titoloEdizione = titoloEdizione; }
+
+    public String getIsbn10() { return isbn10; }
+    public void setIsbn10(String isbn10) { this.isbn10 = isbn10; }
+
+    public String getIsbn13() { return isbn13; }
+    public void setIsbn13(String isbn13) { this.isbn13 = isbn13; }
 
     public String getEditoreId() { return editoreId; }
     public void setEditoreId(String editoreId) { this.editoreId = editoreId; }

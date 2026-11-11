@@ -40,6 +40,18 @@ public class BookEntity {
     private String posizioneId;
 
     /**
+     * ISBN-10 del libro (prima edizione)
+     */
+    @Column(name = "isbn_10", length = 10, nullable = true)
+    private String isbn10;
+
+    /**
+     * ISBN-13 del libro (seconda edizione/aggiornamento)
+     */
+    @Column(name = "isbn_13", length = 17, nullable = true)
+    private String isbn13;
+
+    /**
      * Numero di copie possedute dall'utente
      */
     @Column(name = "copie_possedute")
@@ -87,6 +99,12 @@ public class BookEntity {
 
     public String getPosizioneId() { return posizioneId; }
     public void setPosizioneId(String posizioneId) { this.posizioneId = posizioneId; }
+
+    public String getIsbn10() { return isbn10; }
+    public void setIsbn10(String isbn10) { this.isbn10 = isbn10; }
+
+    public String getIsbn13() { return isbn13; }
+    public void setIsbn13(String isbn13) { this.isbn13 = isbn13; }
 
     public int getCopiePossedute() { return copiePossedute; }
     public void setCopiePossedute(int copiePossedute) { this.copiePossedute = copiePossedute; }

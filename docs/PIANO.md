@@ -9,7 +9,7 @@ Questo documento descrive l'architettura completa del sistema per la gestione de
 | Tabella | Descrizione | Campi chiave |
 |---------|-------------|--------------|
 | `utente` | Utenti registrati | `id`, `username`, `email`, `password_hash`, `role`, `created_at` |
-| `libro` | Entità principale | `id`, `autore_nominativo`, `titolo_edizione`, `editore_id`, `posizione`, `copie_possedute`, `annotazioni`, `data_acquisto`, `deleted_at` |
+| `libro` | Entità principale | `id`, `autore_nominativo`, `titolo_edizione`, `isbn_10`, `isbn_13`, `editore_id`, `posizione`, `copie_possedute`, `annotazioni`, `data_acquisto`, `deleted_at` |
 | `autori` | Anagrafica autore/grato | `id`, `nome_completo`, `nascita`, `morte` (nullable) |
 | `case_editrici` | Edizioni | `id`, `denominazione`, `sede_citta`, `p_a` (nullable), `founded_year`, `specialt_e` (text) |
 | `posizione` | Anagrafica sede | `id`, `nome_comune`, `paese`, `codice_pa`, `natura` |
@@ -43,6 +43,8 @@ CREATE TABLE libro (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     autore_nominativo VARCHAR(255) NOT NULL,
     titolo_edizione TEXT NOT NULL,
+    isbn_10 VARCHAR(10),  -- ISBN prima edizione (formato 10 cifre)
+    isbn_13 VARCHAR(17),  -- ISBN seconda edizione (formato 13 cifre)
     copie_possedute INTEGER DEFAULT 0,
     annotazioni TEXT,
     data_acquisto DATE,
@@ -51,6 +53,9 @@ CREATE TABLE libro (
     FOREIGN KEY (autore_nominativo) REFERENCES autori(nome_completo),
     FOREIGN KEY (editore_id) REFERENCES case_editrici(id)
 );
+
+-- Nota: ISBN-10 e ISBN-13 sono campi opzionali (nullable). Un libro può avere solo uno dei due 
+-- o entrambi. ISBN-10 è il formato storico, ISBN-13 è l'attuale standard internazionale.
 
 -- Tabella anagrafica autore (esterna)
 CREATE TABLE autori (

@@ -30,6 +30,8 @@ CREATE TABLE libro (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     autore_nominativo VARCHAR(255) NOT NULL,
     titolo_edizione TEXT NOT NULL,
+    isbn_10 VARCHAR(10),  -- ISBN prima edizione (formato 10)
+    isbn_13 VARCHAR(17),  -- ISBN seconda edizione (formato 13)
     copie_possedute INTEGER DEFAULT 0 CHECK (copie_possedute >= 0),
     annotazioni TEXT,
     data_acquisto DATE,
