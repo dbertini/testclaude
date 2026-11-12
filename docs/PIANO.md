@@ -9,10 +9,10 @@ Questo documento descrive l'architettura completa del sistema per la gestione de
 | Tabella | Descrizione | Campi chiave |
 |---------|-------------|--------------|
 | `utente` | Utenti registrati | `id`, `username`, `email`, `password_hash`, `role`, `created_at` |
-| `libro` | Entità principale | `id`, `autore_nominativo`, `titolo_edizione`, `isbn_10`, `isbn_13`, `editore_id`, `posizione`, `copie_possedute`, `annotazioni`, `data_acquisto`, `deleted_at` |
+| `libro` | Entità principale | `id`, `autore_nominativo`, `titolo_edizione`, `isbn_10`, `isbn_13`, `editore_id`, `posizione_id`, `copie_possedute`, `annotazioni`, `data_acquisto`, `deleted_at` |
 | `autori` | Anagrafica autore/grato | `id`, `nome_completo`, `nascita`, `morte` (nullable) |
 | `case_editrici` | Edizioni | `id`, `denominazione`, `sede_citta`, `p_a` (nullable), `founded_year`, `specialt_e` (text) |
-| `posizione` | Anagrafica sede | `id`, `nome_comune`, `paese`, `codice_pa`, `natura` |
+| `posizione` | Luogo fisico dove il libro è collocato | `id`, `nome_luogo`, `tipo_posizione`, `note` |
 
 ### **Relazioni**
 
@@ -75,13 +75,12 @@ CREATE TABLE case_editrici (
     specialt_e TEXT
 );
 
--- Tabella anagrafica posizioni
+-- Tabella anagrafica posizioni (luoghi fisici dove i libri sono collocati)
 CREATE TABLE posizione (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    nome_comune TEXT NOT NULL,
-    paese TEXT,
-    codice_pa CHAR(2),
-    natura VARCHAR(50) CHECK (natura IN ('città', 'provincia', 'stato', 'altre'))
+    nome_luogo TEXT NOT NULL,           -- Esempi: "libreria salotto", "camera 1", "comodino", "garage"
+    tipo_posizione TEXT,                 -- Esempi: 'libreria', 'camera', 'comodino', 'garage', 'caffe', 'biblioteca'
+    note TEXT                            -- Note aggiuntive (es: "lato destro del salotto", "sotto lo scaffale principale")
 );
 
 -- Relazioni: autore e libro
